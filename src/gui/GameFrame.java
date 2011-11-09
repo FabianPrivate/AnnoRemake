@@ -26,10 +26,10 @@ public class GameFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Container content = this.getContentPane();
-		content.setLayout(null);
+		content.setLayout(new BorderLayout());
 			
-	    content.add(MapFrame.getInstance(), -1);
-		content.add(ConstructionBar.getInstance(), -1);
+	    content.add(MapFrame.getInstance(),BorderLayout.CENTER);
+		content.add(ConstructionBar.getInstance(), BorderLayout.SOUTH);
 	}
 		
 }
