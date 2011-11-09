@@ -38,7 +38,7 @@ public class MapFrame extends FPanel implements Observer {
 
 
 	private MapFrame() {
-		this.setSize(tilesInScreenX * TileDimensions.Width, tilesInScreenY * TileDimensions.Heigth)
+		this.setSize(tilesInScreenX * TileDimensions.Width, tilesInScreenY * TileDimensions.Heigth);
 		this.addMouseListener(ControlState.getInstance().getMapClickHandler());
 		Map.getInstance().addObserver(this);
 	}

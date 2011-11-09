@@ -1,7 +1,13 @@
 package gui;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridBagLayout;
+import java.awt.LayoutManager;
+import java.awt.Toolkit;
 
 import gui.constructionbar.ConstructionBar;
 import gui.mapframe.MapFrame;
@@ -13,13 +19,17 @@ public class GameFrame extends JFrame{
 	
 	public GameFrame() {
 		super("anno");
+		Toolkit t = getToolkit();
+		setSize(t.getScreenSize());
 		setVisible(true);
 		setResizable(false);
- 		GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Container content = this.getContentPane();
-	    content.add(MapFrame.getInstance());
-		content.add(ConstructionBar.getInstance());
+		content.setLayout(null);
+			
+	    content.add(MapFrame.getInstance(), -1);
+		content.add(ConstructionBar.getInstance(), -1);
 	}
+		
 }
