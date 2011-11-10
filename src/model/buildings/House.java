@@ -7,9 +7,8 @@ import model.civillians.CivillianType;
 public class House extends Building {
 	private CivillianType civillianType;
 		
-	public House(int x, int y, Color color, // extended from building
-			CivillianType civillianType, int maximumNumberOfInhabitants) { // this
-		super(x, y, color);
+	public House(int x, int y, BuildingPlan buildingPlan) { // this
+		super(x, y, buildingPlan);
 		this.civillianType = civillianType;
 	}
 

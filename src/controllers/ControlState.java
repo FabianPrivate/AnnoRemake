@@ -1,5 +1,7 @@
 package controllers;
 
+import gui.mapframe.MapFrame;
+
 public class ControlState {
 	private MapClickHandler mapClickHandler;
 	private static ControlState instance;
@@ -17,6 +19,8 @@ public class ControlState {
 
 	public void setMapClickHandler(MapClickHandler mapClickHandler) {
 		this.mapClickHandler = mapClickHandler;
+		MapFrame mapFrame = MapFrame.getInstance();
+		mapFrame.setMapClickHandler(mapClickHandler);
 	}
 
 	public MapClickHandler getMapClickHandler() {

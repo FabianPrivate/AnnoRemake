@@ -21,24 +21,33 @@ import model.map.Map;
 import model.map.Tile;
 import model.map.TileDimensions;
 
+import gui.GameFrame;
 import gui.components.FPanel;
 
 public class MapFrame extends FPanel implements Observer {
-
+	private static int heigth;
+	private static int width;
+	
 	private static int startviewLocationX = 0;
 	private static int startviewLocationY = 0;
 	
-	private static final int tilesInScreenX = 31;
-	private static final int tilesInScreenY = 17;
+	private static int tilesInScreenX ;
+	private static int tilesInScreenY;
 	
-	private static int endviewLocationX = startviewLocationX + tilesInScreenX;
-	private static int endviewLocationY =  startviewLocationY + tilesInScreenY;
+	private static int endviewLocationX;
+	private static int endviewLocationY;
 	
 	private static MapFrame instance;
 
 
 	private MapFrame() {
-		this.setSize(tilesInScreenX * TileDimensions.Width, tilesInScreenY * TileDimensions.Heigth);
+		heigth = GameFrame.heigth / 5 * 4;
+		width = GameFrame.width / 5 * 4;
+		this.setSize(width, heigth);
+		tilesInScreenX = width/TileDimensions.Width;
+		tilesInScreenY = heigth/TileDimensions.Heigth;
+		endviewLocationX = startviewLocationX + tilesInScreenX; 
+		endviewLocationY = startviewLocationY + tilesInScreenY;
 		this.addMouseListener(ControlState.getInstance().getMapClickHandler());
 		Map.getInstance().addObserver(this);
 	}
@@ -83,6 +92,10 @@ public class MapFrame extends FPanel implements Observer {
 		revalidate();
 		repaint();
 		
+	}
+
+	public void setMapClickHandler(MapClickHandler mapClickHandler) {
+		addMouseListener(mapClickHandler);		
 	}
 	
 	
