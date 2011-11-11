@@ -17,6 +17,8 @@ import controllers.MapClickBuildingHandler;
 import controllers.MapClickHandler;
 
 
+import model.Selectable;
+import model.buildings.Building;
 import model.map.Map;
 import model.map.Tile;
 import model.map.TileDimensions;
@@ -64,8 +66,12 @@ public class MapFrame extends FPanel implements Observer {
 		for (int x = startviewLocationX; x < endviewLocationX; x++ ) {
 			for (int y = startviewLocationY; y < endviewLocationY; y++) {
 				Tile t = Map.getInstance().getTile(x, y);
-				if (t.getBuilding() != null) {
-					g2.setColor(t.getBuilding().getColor());
+				Selectable selectable = t.getSelectable();
+				if (t.getSelectable() != null) {
+					if (t.getSelectable() instanceof Building) {
+						Building b = (Building) selectable;
+						g2.setColor(b.getColor());
+					}
 				} else {
 					g2.setColor(Color.green);
 				}
@@ -95,6 +101,7 @@ public class MapFrame extends FPanel implements Observer {
 	}
 
 	public void setMapClickHandler(MapClickHandler mapClickHandler) {
+		removeMouseListener(getMouseListeners()[0]);
 		addMouseListener(mapClickHandler);		
 	}
 	

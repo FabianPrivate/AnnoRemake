@@ -3,6 +3,7 @@ package controllers;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import model.Model;
 import model.map.Map;
 import model.map.Tile;
 import model.map.TileDimensions;
@@ -11,8 +12,12 @@ public class MapClickHandler implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		getTile(e.getX(), e.getY());
-		System.out.println(e.getModifiers());
+		Tile t = getTile(e.getX(), e.getY());
+		if (e.getModifiers() == 16) {
+			Model.getInstance().setSelected(t.getSelectable());
+		} else if (e.getModifiers() == 4) {
+			Model.getInstance().setSelected(null);
+		}
 	}
 
 	@Override
@@ -23,7 +28,7 @@ public class MapClickHandler implements MouseListener {
 	public void mouseExited(MouseEvent e) {		
 	}
 
-	@Override
+	@Override 
 	public void mousePressed(MouseEvent e) {		
 	}
 

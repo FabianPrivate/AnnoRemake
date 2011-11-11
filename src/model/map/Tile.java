@@ -1,11 +1,12 @@
 package model.map;
 
+import model.Selectable;
 import model.buildings.Building;
 
 public class Tile {
 	private final int x;
 	private final int y;
-	private Building building;
+	private Selectable selectable;
 	
 	public Tile (int x, int y) {
 		this.x = x;
@@ -20,11 +21,13 @@ public class Tile {
 		return y;
 	}
 
-	public void setBuilding(Building building) {
-		this.building = building;
+	public void setSelectable(Selectable selectable) {
+		this.selectable = selectable;
 	}
 
-	public Building getBuilding() {
-		return building;
+
+	
+	public Selectable getSelectable() {
+		return selectable;
 	}
 }

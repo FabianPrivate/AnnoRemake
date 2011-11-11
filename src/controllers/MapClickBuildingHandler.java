@@ -16,13 +16,12 @@ public class MapClickBuildingHandler extends MapClickHandler {
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println(e.getModifiers());
 		Tile t = getTile(e.getX(), e.getY());
 		if (e.getModifiers() == 16 ){
-			t.setBuilding(new Building((int) e.getX(), (int) e.getY(), buildingPlan));
+			t.setSelectable(new Building((int) e.getX(), (int) e.getY(), buildingPlan));
 		} if (e.getModifiers() == 8) {
 			// scroll
-		} else {
+		} else if (e.getModifiers() == 4){
 			ControlState.getInstance().setMapClickHandler(new MapClickHandler());
 		}
 		Map.getInstance().update();
