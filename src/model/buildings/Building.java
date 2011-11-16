@@ -15,7 +15,7 @@ public class Building extends Selectable{
 	private Color color;
 	
 	public Building(int x, int y, BuildingPlan buildingPlan){
-		this.name = buildingPlan.getName();
+		this.setName(buildingPlan.getName());
 		leftTopX = x;
 		leftTopY = y;
 		this.color = buildingPlan.getColor();
@@ -23,6 +23,14 @@ public class Building extends Selectable{
 
 	public Color getColor() {
 		return color;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
 	}
 	
 }

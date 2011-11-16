@@ -8,6 +8,7 @@ public class ControlState {
 	
 	private ControlState() {
 		mapClickHandler = new MapClickHandler();
+		setMapClickHandler(mapClickHandler);
 	}
 	
 	public static ControlState getInstance() {

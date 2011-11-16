@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import model.Model;
+import model.buildings.Building;
 
-public class CitizenPanel extends JPanel {	
+public class HousePanel extends BuildingPanel {	
 	
-	public CitizenPanel() {
+	public HousePanel(Building building) {
+		super(building);
 		Model.getInstance().getSelected();
 	}
 

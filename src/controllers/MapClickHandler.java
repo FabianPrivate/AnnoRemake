@@ -2,18 +2,23 @@ package controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import model.Model;
 import model.map.Map;
 import model.map.Tile;
 import model.map.TileDimensions;
 
-public class MapClickHandler implements MouseListener {
+public class MapClickHandler implements MouseListener , MouseMotionListener{
+	protected Tile hoveringAboveTile = null;
 
+	
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		Tile t = getTile(e.getX(), e.getY());
 		if (e.getModifiers() == 16) {
+			System.out.println("select");
 			Model.getInstance().setSelected(t.getSelectable());
 		} else if (e.getModifiers() == 4) {
 			Model.getInstance().setSelected(null);
@@ -41,6 +46,22 @@ public class MapClickHandler implements MouseListener {
 		int y = clickY/ TileDimensions.Heigth;
 		return Map.getInstance().getTile(x,y);
 		
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Tile getHoveringAboveTile() {
+		return hoveringAboveTile;
 	}
 
 }

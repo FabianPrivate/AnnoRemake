@@ -41,6 +41,7 @@ public class MapFrame extends FPanel implements Observer {
 	
 	private static MapFrame instance;
 
+	private MapClickHandler currentMapClickHandler;
 
 	private MapFrame() {
 		heigth = GameFrame.heigth / 5 * 4;
@@ -50,7 +51,6 @@ public class MapFrame extends FPanel implements Observer {
 		tilesInScreenY = heigth/TileDimensions.Heigth;
 		endviewLocationX = startviewLocationX + tilesInScreenX; 
 		endviewLocationY = startviewLocationY + tilesInScreenY;
-		this.addMouseListener(ControlState.getInstance().getMapClickHandler());
 		Map.getInstance().addObserver(this);
 	}
 	
@@ -62,8 +62,10 @@ public class MapFrame extends FPanel implements Observer {
 	}
 
 	public void paintComponents(Graphics g) {
+		ControlState c = ControlState.getInstance();
 		Graphics2D g2 = (Graphics2D) g;
-		for (int x = startviewLocationX; x < endviewLocationX; x++ ) {
+
+		for (int x = startviewLocationX; x < endviewLocationX; x++) {
 			for (int y = startviewLocationY; y < endviewLocationY; y++) {
 				Tile t = Map.getInstance().getTile(x, y);
 				Selectable selectable = t.getSelectable();
@@ -72,13 +74,15 @@ public class MapFrame extends FPanel implements Observer {
 						Building b = (Building) selectable;
 						g2.setColor(b.getColor());
 					}
+				} else if (t.equals(currentMapClickHandler.getHoveringAboveTile())) {
+					g2.setColor(new Color(25, 100, 25));
 				} else {
-					g2.setColor(Color.green);
+					g2.setColor(new Color(50, 200, 50));
 				}
 				g2.fillRect(x * TileDimensions.Width, y * TileDimensions.Width, TileDimensions.Width, TileDimensions.Heigth);
 				g2.setColor(Color.white);
 				g2.drawRect(x * TileDimensions.Width, y * TileDimensions.Width, TileDimensions.Width, TileDimensions.Heigth);
-				g2.drawString( x + "," + y  , x * TileDimensions.Width + 5, y * TileDimensions.Heigth + TileDimensions.Heigth/2	);
+				g2.drawString(x + "," + y, x * TileDimensions.Width + 5, y * TileDimensions.Heigth + TileDimensions.Heigth / 2);
 			}
 		}
 	}
@@ -101,8 +105,10 @@ public class MapFrame extends FPanel implements Observer {
 	}
 
 	public void setMapClickHandler(MapClickHandler mapClickHandler) {
-		removeMouseListener(getMouseListeners()[0]);
+		removeMouseListener(currentMapClickHandler);
+		currentMapClickHandler = mapClickHandler;
 		addMouseListener(mapClickHandler);		
+		addMouseMotionListener(mapClickHandler);
 	}
 	
 	

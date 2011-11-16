@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Observable;
 
 import model.buildings.BuildingPlan;
+import model.buildings.HousePlan;
+import model.civillians.CivillianType;
 import model.map.Map;
 
 public class Model extends Observable {
@@ -15,9 +17,11 @@ public class Model extends Observable {
 	private static Model instance;
 	
 	private HashMap<String, BuildingPlan> buildingPlans = new HashMap<String, BuildingPlan>();
+	private HashMap<String, CivillianType> civillianTypes = new HashMap<String, CivillianType>();
 	
 	private Model() {
-		buildingPlans.put("House", new BuildingPlan("House", Color.red));
+		civillianTypes.put("Colonist", new CivillianType("Colonist"));
+		buildingPlans.put("House", new HousePlan("House", Color.red, civillianTypes.get("Colonist")));
 	}
 	
 	public static Model getInstance(){
@@ -30,7 +34,7 @@ public class Model extends Observable {
 	public void setSelected(Selectable selected) {
 		this.selected = selected;
 		setChanged();
-		
+		notifyObservers();
 	}
 
 	public Selectable getSelected() {
