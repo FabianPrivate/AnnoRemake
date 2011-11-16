@@ -27,8 +27,8 @@ public class BuildingPanel extends FPanel{
 			House h = (House) selectedBuilding;
 			inhabitantLabel.setText(h.getCivillianType().getName());
 			this.add(inhabitantLabel);
-			for (Need n : h.getCivillianType().getNeeds() {
-				
+			for (Need n : h.getCivillianType().getNeeds()) {
+				this.add(new NeedPanel(n));
 			}
 
 		}

@@ -8,6 +8,8 @@ import java.util.Observable;
 import model.buildings.BuildingPlan;
 import model.buildings.HousePlan;
 import model.civillians.CivillianType;
+import model.civillians.Need;
+import model.civillians.Subneed;
 import model.map.Map;
 
 public class Model extends Observable {
@@ -20,7 +22,11 @@ public class Model extends Observable {
 	private HashMap<String, CivillianType> civillianTypes = new HashMap<String, CivillianType>();
 	
 	private Model() {
-		civillianTypes.put("Colonist", new CivillianType("Colonist"));
+		ArrayList<Need> needs = new ArrayList<Need>();
+		ArrayList<Subneed> food = new ArrayList<Subneed>();
+		food.add(new Subneed("Fish", 1));
+		needs.add( new Need("Food",food));
+		civillianTypes.put("Colonist", new CivillianType("Colonist", needs));
 		buildingPlans.put("House", new HousePlan("House", Color.red, civillianTypes.get("Colonist")));
 	}
 	
