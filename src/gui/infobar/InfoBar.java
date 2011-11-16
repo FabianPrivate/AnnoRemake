@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import model.Model;
 import model.Selectable;
 import model.buildings.Building;
+import model.buildings.House;
 
 public class InfoBar extends JPanel implements Observer{
 	private static int heigth;

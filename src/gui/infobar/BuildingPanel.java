@@ -1,15 +1,18 @@
 package gui.infobar;
 
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 
 import model.buildings.Building;
 import model.buildings.House;
+import model.civillians.Need;
 import gui.components.FPanel;
 
 public class BuildingPanel extends FPanel{
-	private Building selectedBuilding;
+	protected Building selectedBuilding;
 	
-	private JLabel nameLabel = new JLabel();
+	protected JLabel nameLabel = new JLabel();
+	protected JLabel inhabitantLabel = new JLabel();
 	
 	public BuildingPanel(Building b) {
 		selectedBuilding = b;
@@ -22,10 +25,13 @@ public class BuildingPanel extends FPanel{
 		this.add(nameLabel);
 		if (selectedBuilding instanceof House){
 			House h = (House) selectedBuilding;
-			nameLabel.setText(h.getCivillianType().getName());
-			this.add(nameLabel);
+			inhabitantLabel.setText(h.getCivillianType().getName());
+			this.add(inhabitantLabel);
+			for (Need n : h.getCivillianType().getNeeds() {
+				
+			}
+
 		}
-		
 		revalidate();
 		repaint();
 	}

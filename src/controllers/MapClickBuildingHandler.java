@@ -25,8 +25,9 @@ public class MapClickBuildingHandler extends MapClickHandler  {
 		if (e.getModifiers() == 16 ){
 			if (buildingPlan instanceof HousePlan) {
 				t.setSelectable(new House((int) e.getX(), (int) e.getY(),(HousePlan) buildingPlan));
+			} else {
+				t.setSelectable(new Building((int) e.getX(), (int) e.getY(), buildingPlan));
 			}
-			t.setSelectable(new Building((int) e.getX(), (int) e.getY(), buildingPlan));
 			ControlState.getInstance().setMapClickHandler(new MapClickHandler());
 		} if (e.getModifiers() == 8) {
 			// scroll
