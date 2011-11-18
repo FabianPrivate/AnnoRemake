@@ -6,9 +6,11 @@ import model.civillians.CivillianType;
 
 public class HousePlan extends BuildingPlan{
 	private CivillianType civillianType;
+	private int numberOfInhabitants;
 
-	public HousePlan(String name, Color color, CivillianType civillianType) {
-		super(name, color);
+	public HousePlan(BuildingPlan buildingPlan, CivillianType civillianType, int numberOfInhabitants) {
+		super(buildingPlan);
+		this.numberOfInhabitants = numberOfInhabitants;
 		this.setCivillianType(civillianType);
 	}
 

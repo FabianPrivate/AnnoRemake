@@ -27,7 +27,8 @@ public class Model extends Observable {
 		food.add(new Subneed("Fish", 1));
 		needs.add( new Need("Food",food));
 		civillianTypes.put("Colonist", new CivillianType("Colonist", needs));
-		buildingPlans.put("House", new HousePlan("House", Color.red, civillianTypes.get("Colonist")));
+		BuildingPlan buildingPlan = new BuildingPlan("House", Color.red, 1, 1);
+		//buildingPlans.put("House", new HousePlan(buildingPlan, civillianTypes.get("Colonist")));
 	}
 	
 	public static Model getInstance(){
@@ -51,4 +52,8 @@ public class Model extends Observable {
 		return buildingPlans;
 	}
 
+	public HashMap<String, CivillianType> getCivillianTypes() {
+		return civillianTypes;
+	}
+	
 }
