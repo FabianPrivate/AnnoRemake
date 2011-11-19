@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 
-import fileReaders.Sheet;
+import model.buildings.BuildingPlan;
+
+import jxl.Sheet;
 
 import jxl.Workbook;
 
@@ -16,13 +18,16 @@ public class BuildingReader {
 	protected InputStreamReader inputStreamReader;
 	protected BufferedReader input;
 	
-	public void read(String fileName) {
+	public BuildingPlan read(String fileName) {
 		File inputWorkbook = new File(fileName);
         Workbook w;
         try {	
-			  w = Workbook.getWorkbook(inputWorkbook);
+        	w = Workbook.getWorkbook(inputWorkbook);
             Sheet sheet = w.getSheet(0); 
-        }
+            name = sheet.getC
+        } catch (Exception e) {
+			// TODO: handle exception
+		}
         
 	}
 
