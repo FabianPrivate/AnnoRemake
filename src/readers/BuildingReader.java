@@ -45,7 +45,7 @@ public class BuildingReader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return buildingPlans;
 	}
 	
 	public static BuildingPlan typeSwitch(String fileName, String type, BuildingPlan buildingPlan, int i ) {
