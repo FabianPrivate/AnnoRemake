@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import model.buildings.BuildingPlan;
 
@@ -17,7 +18,8 @@ public class BuildingReader {
 	protected InputStreamReader inputStreamReader;
 	protected BufferedReader input;
 	
-	public BuildingPlan read(String fileName) {
+	public static ArrayList<BuildingPlan> read(String fileName) {
+		ArrayList<BuildingPlan> buildingPlans = new ArrayList<BuildingPlan>();
 		BuildingPlan buildingPlan = null;
 		File inputWorkbook = new File(fileName);
 		Workbook w;
@@ -34,7 +36,8 @@ public class BuildingReader {
 				int width = Integer.parseInt(sheet.getCell(3,i).getContents());
 				int height = Integer.parseInt(sheet.getCell(4,i).getContents());
 				buildingPlan = new BuildingPlan(name, color, width, height);
-				typeSwitch(fileName,type, buildingPlan, i);
+				buildingPlan = typeSwitch(fileName,type, buildingPlan, i);
+				buildingPlans.add(buildingPlan);	
 			}
 
 		} catch (BiffException e) {
@@ -45,11 +48,13 @@ public class BuildingReader {
 		return null;
 	}
 	
-	public void typeSwitch(String fileName, String type, BuildingPlan buildingPlan, int i ) {
+	public static BuildingPlan typeSwitch(String fileName, String type, BuildingPlan buildingPlan, int i ) {
+		BuildingPlan plan = null;
 		if (type.equals("HOUSE")) {
 			HouseReader houseReader = new HouseReader();
-			houseReader.read(fileName, buildingPlan,  i);
+			plan = houseReader.read(fileName, buildingPlan,  i);
 		}
+		return plan;
 	}
 	
 

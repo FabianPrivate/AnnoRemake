@@ -15,7 +15,7 @@ public class HouseReader {
 
 	public HousePlan read(String fileName,BuildingPlan buildingPlan, int i) {
 		HousePlan housePlan = null;
-		File inputWorkbook = new File(fileName);
+ 		File inputWorkbook = new File(fileName);
 		Workbook w;
 		try {
 			w = Workbook.getWorkbook(inputWorkbook);
