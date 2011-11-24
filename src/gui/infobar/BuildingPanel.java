@@ -20,7 +20,6 @@ public class BuildingPanel extends FPanel{
 	}
 	
 	public void BuildUI(){
-		System.out.println(selectedBuilding.getName());
 		nameLabel.setText(selectedBuilding.getName());
 		this.add(nameLabel);
 		if (selectedBuilding instanceof House){

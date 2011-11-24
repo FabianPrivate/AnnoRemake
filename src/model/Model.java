@@ -28,8 +28,13 @@ public class Model extends Observable {
 		ArrayList<Subneed> food = new ArrayList<Subneed>();
 		food.add(new Subneed("Fish", 1));
 		needs.add( new Need("Food",food));
-		civillianTypes.put("Colonist", new CivillianType("Colonist", needs));
-		ArrayList<BuildingPlan> buildingPlans = BuildingReader.read("Files\\Buildings.xls");
+		civillianTypes.put("COLONIST", new CivillianType("COLONIST", needs));
+		
+	}
+	
+	public void addTypes() {
+		BuildingReader buildingReader = new BuildingReader();
+		ArrayList<BuildingPlan> buildingPlans = buildingReader.read("Files\\Buildings.xls");
 		for (BuildingPlan b : buildingPlans) {
 			this.buildingPlans.put(b.getName(), b);
 		}

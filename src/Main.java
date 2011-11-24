@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import model.Model;
 import model.map.Map;
 
 import gui.GameFrame;
@@ -15,8 +16,11 @@ import gui.GameFrame;
 public class Main {
 
 	public static void main(String[] args) {
+		Model model = Model.getInstance();
+		model.addTypes();
 		Map map = new Map(40, 40);
 		GameFrame gameFrame = new GameFrame();
+		
 	}
 	
 

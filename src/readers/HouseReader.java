@@ -2,6 +2,8 @@ package readers;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import jxl.Sheet;
 import jxl.Workbook;
@@ -20,8 +22,9 @@ public class HouseReader {
 		try {
 			w = Workbook.getWorkbook(inputWorkbook);
 			Sheet sheet = w.getSheet(1);
-			CivillianType civillianType = Model.getInstance().getCivillianTypes().get(sheet.getCell(0,i).getContents());
-			int numberOfInhabitants = Integer.parseInt(sheet.getCell(2,i).getContents());
+			HashMap<String, CivillianType> civillianTypes = Model.getInstance().getCivillianTypes();
+			CivillianType civillianType = civillianTypes.get(sheet.getCell(0,i).getContents());
+			int numberOfInhabitants = Integer.parseInt(sheet.getCell(1,i).getContents());
 			housePlan = new HousePlan(buildingPlan, civillianType, numberOfInhabitants);
 		} catch (BiffException e) {
 			e.printStackTrace();

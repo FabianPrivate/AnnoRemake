@@ -18,7 +18,6 @@ public class MapClickHandler implements MouseListener , MouseMotionListener{
 	public void mouseClicked(MouseEvent e) {
 		Tile t = getTile(e.getX(), e.getY());
 		if (e.getModifiers() == 16) {
-			System.out.println("select");
 			Model.getInstance().setSelected(t.getSelectable());
 		} else if (e.getModifiers() == 4) {
 			Model.getInstance().setSelected(null);
