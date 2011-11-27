@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
 
+import readers.BuildingReader;
+
 import model.buildings.BuildingPlan;
 import model.buildings.HousePlan;
 import model.civillians.CivillianType;
@@ -26,8 +28,16 @@ public class Model extends Observable {
 		ArrayList<Subneed> food = new ArrayList<Subneed>();
 		food.add(new Subneed("Fish", 1));
 		needs.add( new Need("Food",food));
-		civillianTypes.put("Colonist", new CivillianType("Colonist", needs));
-		buildingPlans.put("House", new HousePlan("House", Color.red, civillianTypes.get("Colonist")));
+		civillianTypes.put("COLONIST", new CivillianType("COLONIST", needs));
+		
+	}
+	
+	public void addTypes() {
+		BuildingReader buildingReader = new BuildingReader();
+		ArrayList<BuildingPlan> buildingPlans = buildingReader.read("Files\\Buildings.xls");
+		for (BuildingPlan b : buildingPlans) {
+			this.buildingPlans.put(b.getName(), b);
+		}
 	}
 	
 	public static Model getInstance(){
@@ -51,4 +61,8 @@ public class Model extends Observable {
 		return buildingPlans;
 	}
 
+	public HashMap<String, CivillianType> getCivillianTypes() {
+		return civillianTypes;
+	}
+	
 }

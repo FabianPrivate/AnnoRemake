@@ -47,7 +47,6 @@ public class MapClickBuildingHandler extends MapClickHandler  {
 	public void mouseMoved(MouseEvent e) {
 		Tile t = getTile(e.getX(), e.getY());
 		hoveringAboveTile = t;
-		System.out.println(t.getX() + "," + t.getY());
 		MapFrame.getInstance().updateUI();
 	}
 	

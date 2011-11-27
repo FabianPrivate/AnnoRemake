@@ -53,7 +53,6 @@ public class ConstructionBar extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			JButton button = (JButton) e.getSource();
 			String name = button.getText();
-			System.out.println(name);
 			BuildingPlan b = Model.getInstance().getBuildingPlans().get(name);
 			ControlState.getInstance().setMapClickHandler(new MapClickBuildingHandler(b));
 		}

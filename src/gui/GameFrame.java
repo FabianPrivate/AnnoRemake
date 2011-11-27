@@ -1,17 +1,12 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
-import java.awt.GridBagLayout;
-import java.awt.LayoutManager;
-import java.awt.Toolkit;
-
 import gui.constructionbar.ConstructionBar;
 import gui.infobar.InfoBar;
 import gui.mapframe.MapFrame;
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
