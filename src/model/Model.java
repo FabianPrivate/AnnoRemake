@@ -17,6 +17,7 @@ import model.map.Map;
 public class Model extends Observable {
 	private Map map;
 	private Selectable selected;
+	private Player player;
 	
 	private static Model instance;
 	
@@ -62,6 +63,11 @@ public class Model extends Observable {
 
 	public HashMap<String, CivillianType> getCivillianTypes() {
 		return civillianTypes;
+	}
+
+	public void update() {
+		player.update();
+		
 	}
 	
 }
