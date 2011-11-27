@@ -15,7 +15,7 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
 public class BuildingReader {
-	
+	 	
 	protected InputStreamReader inputStreamReader;
 	protected BufferedReader input;
 	
@@ -51,10 +51,13 @@ public class BuildingReader {
 	}
 	
 	public BuildingPlan typeSwitch(String fileName, String type, BuildingPlan buildingPlan, int i ) {
-		BuildingPlan plan = null;
+		BuildingPlan plan = buildingPlan;
 		if (type.equals("HOUSE")) {
 			HouseReader houseReader = new HouseReader();
 			plan = houseReader.read(fileName, buildingPlan,  i);
+		} else if (type.equals("ROAD")) {
+			RoadReader roadReader = new RoadReader();
+			plan  = roadReader.read(fileName, buildingPlan, i);
 		}
 		return plan;
 	}

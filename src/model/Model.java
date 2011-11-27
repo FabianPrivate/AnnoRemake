@@ -29,7 +29,6 @@ public class Model extends Observable {
 		food.add(new Subneed("Fish", 1));
 		needs.add( new Need("Food",food));
 		civillianTypes.put("COLONIST", new CivillianType("COLONIST", needs));
-		
 	}
 	
 	public void addTypes() {
