@@ -11,6 +11,11 @@ public class Clock extends Thread{
 		super.run();
 		while(true){
 			Model.getInstance().update();
+			try {
+				wait(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

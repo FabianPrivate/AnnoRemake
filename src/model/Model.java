@@ -30,6 +30,8 @@ public class Model extends Observable {
 		food.add(new Subneed("Fish", 1));
 		needs.add( new Need("Food",food));
 		civillianTypes.put("COLONIST", new CivillianType("COLONIST", needs));
+		Clock clock = new Clock();
+		clock.start();
 	}
 	
 	public void addTypes() {
@@ -67,7 +69,6 @@ public class Model extends Observable {
 
 	public void update() {
 		player.update();
-		
 	}
 	
 }
