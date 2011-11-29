@@ -11,7 +11,7 @@ public class Player {
 	private HashMap<Resource, Integer> resources = new HashMap<Resource, Integer>();
 	private ArrayList<Building> buildings = new ArrayList<Building>();
 	
-	public Player() {
+	public Player(int gold) {
 		
 	}
 	
@@ -20,7 +20,7 @@ public class Player {
 	}
 	
 	public void addBuilding(Building building) {
-		
+			
 	}
 	
 
