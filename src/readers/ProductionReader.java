@@ -8,6 +8,7 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import model.Model;
+import model.Resource;
 import model.buildings.BuildingPlan;
 import model.buildings.HousePlan;
 import model.buildings.ProductionPlan;
@@ -22,10 +23,11 @@ public class ProductionReader {
 		try {
 			w = Workbook.getWorkbook(inputWorkbook);
 			Sheet sheet = w.getSheet(3);
-			HashMap<String, CivillianType> civillianTypes = Model.getInstance().getCivillianTypes();
-			CivillianType civillianType = civillianTypes.get(sheet.getCell(0,i).getContents());
-			int numberOfInhabitants = Integer.parseInt(sheet.getCell(1,i).getContents());
-			productionPlan = new ProductionPlan(buildingPlan);
+			String type = sheet.getCell(0,i).getContents();
+			Resource resource = Model.getInstance().getResource(sheet.getCell(1,i).getContents();
+			double amountProduced = Double.parseDouble(sheet.getCell(1,i).getContents());
+			productionPlan = new ProductionPlan(buildingPlan, resource, amountProduced);
+			productionPlan = typeSwitch(fileName, type, productionPlan, i);
 		} catch (BiffException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -33,6 +35,13 @@ public class ProductionReader {
 		}
 		return productionPlan;
 		
+	}
+	
+	public ProductionPlan typeSwitch(String fileName, String type, ProductionPlan productionPlan, int i ) {
+		ProductionPlan plan = productionPlan;
+		if (type.equals("FARM")) {
+		}
+		return plan;
 	}
 
 }

@@ -23,6 +23,7 @@ public class Model extends Observable {
 	
 	private HashMap<String, BuildingPlan> buildingPlans = new HashMap<String, BuildingPlan>();
 	private HashMap<String, CivillianType> civillianTypes = new HashMap<String, CivillianType>();
+	private HashMap<String, Resource> resources = new HashMap<String, Resource>();
 	
 	private Model() {
 		ArrayList<Need> needs = new ArrayList<Need>();
@@ -69,6 +70,10 @@ public class Model extends Observable {
 
 	public void update() {
 		player.update();
+	}
+
+	public Resource getResource(String resourceName) {
+		return resources.get(resourceName);
 	}
 	
 }
