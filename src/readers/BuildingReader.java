@@ -58,6 +58,9 @@ public class BuildingReader {
 		} else if (type.equals("ROAD")) {
 			RoadReader roadReader = new RoadReader();
 			plan  = roadReader.read(fileName, buildingPlan, i);
+		} else if (type.equals("PRODUCTION")) {
+			ProductionReader productionReader = new ProductionReader();
+			plan  = productionReader.read(fileName, buildingPlan, i);
 		}
 		return plan;
 	}

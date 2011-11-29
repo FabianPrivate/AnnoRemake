@@ -32,5 +32,7 @@ public class Building extends Selectable{
 	public String getName() {
 		return name;
 	}
+
+	
 	
 }
