@@ -5,10 +5,13 @@ import gui.mapframe.MapFrame;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
+import model.Model;
 import model.buildings.Building;
 import model.buildings.BuildingPlan;
 import model.buildings.House;
 import model.buildings.HousePlan;
+import model.buildings.ProductionBuilding;
+import model.buildings.ProductionPlan;
 import model.map.Map;
 import model.map.Tile;
 
@@ -25,6 +28,10 @@ public class MapClickBuildingHandler extends MapClickHandler  {
 		if (e.getModifiers() == 16 ){
 			if (buildingPlan instanceof HousePlan) {
 				t.setSelectable(new House((int) e.getX(), (int) e.getY(),(HousePlan) buildingPlan));
+			} else if (buildingPlan instanceof ProductionPlan) {
+				Building b = new ProductionBuilding((int) e.getX(), (int) e.getY(),(ProductionPlan) buildingPlan);
+				Model.getInstance().getPlayer().addBuilding(b);
+				t.setSelectable(b);
 			} else {
 				t.setSelectable(new Building((int) e.getX(), (int) e.getY(), buildingPlan));
 			}

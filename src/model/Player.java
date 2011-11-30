@@ -28,7 +28,7 @@ public class Player {
 	}
 	
 	public void addBuilding(Building building) {
-			
+		buildings.add(building);
 	}
 	
 

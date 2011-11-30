@@ -74,5 +74,9 @@ public class Model extends Observable {
 	public Resource getResource(String resourceName) {
 		return resources.get(resourceName);
 	}
+
+	public Player getPlayer() {
+		return player;
+	}
 	
 }
