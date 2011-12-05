@@ -13,6 +13,9 @@ public class ProductionBuilding extends Building{
 		this.setAmountProducedPerTick(productionPlan.getAmountProduced());
 	}
 
+	public void update() {
+		currentAmount += amountProducedPerTick;
+	}
 	//TODO efficiency....
 	public ProductionAmountSet getProduction() {
 		String currentAmount = String.valueOf(this.currentAmount);

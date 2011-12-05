@@ -33,6 +33,11 @@ public class Building extends Selectable{
 		return name;
 	}
 
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 }
