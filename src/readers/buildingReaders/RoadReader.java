@@ -1,4 +1,4 @@
-package readers;
+package readers.buildingReaders;
 
 import java.io.File;
 import java.io.IOException;

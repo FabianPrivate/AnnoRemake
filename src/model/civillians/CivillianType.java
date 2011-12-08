@@ -1,22 +1,21 @@
 package model.civillians;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import model.Resource;
 
 public class CivillianType {
-	private final String name;
-	private ArrayList<Need> needs;
+	private String name;
+	private HashMap<Resource, Double> resourceConsumption = new HashMap<Resource, Double>();
 	
-	public CivillianType(String name, ArrayList<Need> needs) {
+	public CivillianType(String name, HashMap<Resource, Double> needs) {
 		this.name = name;
-		this.needs = needs;
+		resourceConsumption = needs;
 	}
 
 	public String getName() {
 		return name;
-	}
-
-	public ArrayList<Need> getNeeds() {
-		return needs;
 	}
 
 }

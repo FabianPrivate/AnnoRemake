@@ -1,4 +1,4 @@
-package readers;
+package readers.buildingReaders;
 
 public class StorageReader {
 

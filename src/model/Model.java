@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
 
-import readers.BuildingReader;
+import readers.CivilianReader;
+import readers.ResourceReader;
+import readers.buildingReaders.BuildingReader;
 
 import model.buildings.BuildingPlan;
 import model.civillians.CivillianType;
-import model.civillians.Need;
-import model.civillians.Subneed;
 import model.map.Map;
 
 public class Model extends Observable {
@@ -24,22 +24,18 @@ public class Model extends Observable {
 	private HashMap<String, Resource> resources = new HashMap<String, Resource>();
 	
 	private Model() {
-		resources.put("WOOD", new Resource("WOOD"));
-		ArrayList<Need> needs = new ArrayList<Need>();
-		ArrayList<Subneed> food = new ArrayList<Subneed>();
-		food.add(new Subneed("Fish", 1));
-		needs.add( new Need("Food",food));
-		civillianTypes.put("COLONIST", new CivillianType("COLONIST", needs));
 		Clock clock = new Clock();
 		clock.start();
 	}
 	
 	public void addTypes() {
+		ResourceReader resourceReader = new ResourceReader();
+		resources = resourceReader.read("Files\\Resources.xls");
+		CivilianReader civilianReader = new CivilianReader();
+		civillianTypes = civilianReader.read("Files\\Civillians");
 		BuildingReader buildingReader = new BuildingReader();
-		ArrayList<BuildingPlan> buildingPlans = buildingReader.read("Files\\Buildings.xls");
-		for (BuildingPlan b : buildingPlans) {
-			this.buildingPlans.put(b.getName(), b);
-		}
+		buildingPlans = buildingReader.read("Files\\Buildings.xls");
+		
 	}
 	
 	public static Model getInstance(){

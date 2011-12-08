@@ -1,4 +1,4 @@
-package readers;
+package readers.buildingReaders;
 
 import java.awt.Color;
 import java.io.BufferedReader;
@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.buildings.BuildingPlan;
 
@@ -20,8 +21,8 @@ public class BuildingReader {
 	protected BufferedReader input;
 	
 
-	public ArrayList<BuildingPlan> read(String fileName) {
-		ArrayList<BuildingPlan> buildingPlans = new ArrayList<BuildingPlan>();
+	public HashMap<String, BuildingPlan> read(String fileName) {
+		HashMap<String, BuildingPlan> buildingPlans = new HashMap<String, BuildingPlan>();
 		BuildingPlan buildingPlan = null;
 		File inputWorkbook = new File(fileName);
 		Workbook w;
@@ -31,7 +32,6 @@ public class BuildingReader {
 			for (int i = 1; i < sheet.getRows(); i++) {
 				String type = sheet.getCell(0, i).getContents();
 				String name = sheet.getCell(1, i).getContents();
-				System.out.println(name);
 				String[] colorValues = sheet.getCell(2,i).getContents().split(",");
 				int [] values = {Integer.parseInt(colorValues[0]),Integer.parseInt(colorValues[1]), Integer.parseInt(colorValues[2])};
 				Color color = new Color(values[0], values[1], values[2]);
@@ -39,9 +39,8 @@ public class BuildingReader {
 				int height = Integer.parseInt(sheet.getCell(4,i).getContents());
 				buildingPlan = new BuildingPlan(name, color, width, height);
 				buildingPlan = typeSwitch(fileName,type, buildingPlan, i);
-				buildingPlans.add(buildingPlan);	
+				buildingPlans.put(name, buildingPlan);	
 			}
-
 		} catch (BiffException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

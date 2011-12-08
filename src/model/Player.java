@@ -23,12 +23,10 @@ public class Player {
 				ProductionAmountSet productionAmountSet = productionBuilding.getProduction();
 				Integer currentAmount = resources.get(productionAmountSet.getResource());
 				if (currentAmount != null ){
-				resources.put(productionAmountSet.getResource(),currentAmount + productionAmountSet.getAmount());
+					resources.put(productionAmountSet.getResource(),currentAmount + productionAmountSet.getAmount());
 				} else {
 					resources.put(productionAmountSet.getResource(),productionAmountSet.getAmount());
-
 				}
-				
 			}
 		}
 		for (Resource r : resources.keySet()) {
