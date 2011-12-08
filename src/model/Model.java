@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
 
@@ -32,10 +31,9 @@ public class Model extends Observable {
 		ResourceReader resourceReader = new ResourceReader();
 		resources = resourceReader.read("Files\\Resources.xls");
 		CivilianReader civilianReader = new CivilianReader();
-		civillianTypes = civilianReader.read("Files\\Civillians");
+		civillianTypes = civilianReader.read("Files\\Civillians.xls");
 		BuildingReader buildingReader = new BuildingReader();
-		buildingPlans = buildingReader.read("Files\\Buildings.xls");
-		
+		buildingPlans = buildingReader.read("Files\\Buildings.xls");	
 	}
 	
 	public static Model getInstance(){

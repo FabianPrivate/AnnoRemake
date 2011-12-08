@@ -12,6 +12,8 @@ import model.Model;
 import model.Resource;
 import model.buildings.BuildingPlan;
 import model.civillians.CivillianType;
+import model.civillians.needs.Need;
+import model.civillians.needs.ResourceNeed;
 
 public class CivilianReader {
 	
@@ -25,12 +27,13 @@ public class CivilianReader {
 			for (int i = 1; i < sheet.getRows(); i++) {
 				String name = sheet.getCell(0, i).getContents();
 				String needsString[] = sheet.getCell(1, i).getContents().split(";");
-				HashMap<Resource, Double> needs = new HashMap<Resource, Double>();
+				ArrayList<Need> needs = new ArrayList<Need>();
 				for (String s : needsString ) {
 					String values[] = s.split(",");
 					Resource resource = Model.getInstance().getResource(values[0]);
 					Double amount = Double.valueOf(values[1]);
-					needs.put(resource, amount);
+					ResourceNeed resourceNeed = new ResourceNeed(resource, amount);
+					needs.add(resourceNeed);
 				}
 				CivillianType civillianType = new CivillianType(name, needs);
 				civilianTypes.put(name, civillianType);

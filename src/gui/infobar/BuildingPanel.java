@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 
 import model.buildings.Building;
 import model.buildings.House;
+import model.civillians.needs.Need;
 //import model.civillians.Need;
 import gui.components.FPanel;
 
@@ -26,9 +27,9 @@ public class BuildingPanel extends FPanel{
 			House h = (House) selectedBuilding;
 			inhabitantLabel.setText(h.getCivillianType().getName());
 			this.add(inhabitantLabel);
-//			for (Need n : h.getCivillianType().getNeeds()) {
-//				this.add(new NeedPanel(n));
-//			}
+			for (Need n : h.getCivillianType().getNeeds()) {
+				this.add(new NeedPanel(n));
+			}
 
 		}
 		revalidate();
