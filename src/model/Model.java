@@ -9,12 +9,14 @@ import readers.buildingReaders.BuildingReader;
 
 import model.buildings.BuildingPlan;
 import model.civillians.CivillianType;
+import model.map.Area;
 import model.map.Map;
 
 public class Model extends Observable {
 	private Map map;
 	private Selectable selected;
 	private Player player = new Player(50000);
+	private HashMap<Integer, HashMap<Integer, Area>> world = new HashMap<Integer, HashMap<Integer, Area>>();
 	
 	private static Model instance;
 	
@@ -71,6 +73,10 @@ public class Model extends Observable {
 
 	public Player getPlayer() {
 		return player;
+	}
+	
+	public HashMap<Integer, HashMap<Integer, Area>> getWorld() {
+		return world;
 	}
 	
 }

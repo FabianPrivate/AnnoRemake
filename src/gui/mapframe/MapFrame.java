@@ -51,7 +51,7 @@ public class MapFrame extends FPanel implements Observer {
 		tilesInScreenY = heigth/TileDimensions.Heigth;
 		endviewLocationX = startviewLocationX + tilesInScreenX; 
 		endviewLocationY = startviewLocationY + tilesInScreenY;
-		Map.getInstance().addObserver(this);
+		Map.getCurrent().addObserver(this);
 	}
 	
 	public static MapFrame getInstance() {
@@ -67,7 +67,7 @@ public class MapFrame extends FPanel implements Observer {
 
 		for (int x = startviewLocationX; x < endviewLocationX; x++) {
 			for (int y = startviewLocationY; y < endviewLocationY; y++) {
-				Tile t = Map.getInstance().getTile(x, y);
+				Tile t = Map.getCurrent().getTile(x, y);
 				Selectable selectable = t.getSelectable();
 				if (t.getSelectable() != null) {
 					if (t.getSelectable() instanceof Building) {

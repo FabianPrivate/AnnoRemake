@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import model.map.Area;
 import model.map.Map;
 
-public class Region {
+public class Region { // size 30km x 30
 	private ArrayList<ArrayList<Map>> maps = new ArrayList<ArrayList<Map>>();
 	private Area parentArea;
 	

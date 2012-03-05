@@ -41,7 +41,7 @@ public class MapClickBuildingHandler extends MapClickHandler  {
 		} else if (e.getModifiers() == 4){
 			ControlState.getInstance().setMapClickHandler(new MapClickHandler());
 		}
-		Map.getInstance().update();
+		Map.getCurrent().update();
 	}
 
 	@Override

@@ -6,6 +6,10 @@ import model.buildings.Building;
 public class Tile {
 	private final int x;
 	private final int y;
+	
+	private int heigth;
+	private TileType type;
+	
 	private Selectable selectable;
 	
 	public Tile (int x, int y) {
@@ -25,9 +29,32 @@ public class Tile {
 		this.selectable = selectable;
 	}
 
+	public void determineHeigth() {
+		
+	}
+	
+	public void determineType() {
+		
+	}
 
 	
 	public Selectable getSelectable() {
 		return selectable;
+	}
+
+	public void setHeigth(int heigth) {
+		this.heigth = heigth;
+	}
+
+	public int getHeigth() {
+		return heigth;
+	}
+
+	public void setType(TileType type) {
+		this.type = type;
+	}
+
+	public TileType getType() {
+		return type;
 	}
 }

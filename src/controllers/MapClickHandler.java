@@ -43,7 +43,7 @@ public class MapClickHandler implements MouseListener , MouseMotionListener{
 	public Tile getTile (int clickX, int clickY) {
 		int x = clickX/ TileDimensions.Width;
 		int y = clickY/ TileDimensions.Heigth;
-		return Map.getInstance().getTile(x,y);
+		return Map.getCurrent().getTile(x,y);
 		
 	}
 

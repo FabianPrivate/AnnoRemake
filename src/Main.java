@@ -1,11 +1,4 @@
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
 
 import model.Model;
 import model.map.Map;
@@ -18,7 +11,7 @@ public class Main {
 	public static void main(String[] args) {
 		Model model = Model.getInstance();
 		model.addTypes();
-		Map map = new Map(40, 40);
+		Map map = new Map(1000, 1000);
 		GameFrame gameFrame = new GameFrame();
 		
 	}
